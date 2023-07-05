@@ -1,0 +1,141 @@
+* {
+    border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+html {
+    height: 100%;
+}
+body {
+    width: 87%;
+    margin: auto;
+    height: 95%;
+    margin-top: 15px;
+    border-radius: 8px;
+
+}
+
+header, main, footer {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 15%;
+}
+
+main {
+    height: 65%;
+}
+
+footer {
+    height: 20%;
+}
+
+.top-bar {
+    height: 60%;
+}
+
+#top-bar-div {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+#highscore-button-div, #time-button-div {
+    width: 50%;
+    display: flex;
+}
+#highscore-button-div {
+    justify-content: flex-start;
+}
+#time-button-div {
+    justify-content: flex-end;
+}
+#highscore-button {
+    margin-left: 8%;
+}
+#timer {
+    margin-right: 8%;
+}
+
+
+.main-quiz-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+}
+
+#main-quiz-div {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#h1-div {
+    display: flex;
+    align-items: center;
+    height: 20%;
+}
+#h1-div h1 {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#main-question-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    height: 25%;
+}
+#questions-asked {
+    margin: 10px 0;
+}
+
+.question-button:first-of-type {
+margin-top: 5%;
+}
+.question-button {
+    width: 60%;
+    height: 13%;
+    margin-bottom: 3%;
+}
+
+#start-quiz-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 15%;
+    width: 75%;
+}
+#start-quiz {
+    width: 30%;
+    height: 50%;
+    border-radius: 5px;
+}
+#start-quiz-div hr {
+    display: none;
+    width: 100%;
+}
+
+.quiz-footer {
+    height: 100%;
+}
+#empty-footer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    border-radius: 6px;
+}
+
+#true-or-false {
+    font-size: 17px;
+}
