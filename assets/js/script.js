@@ -2,14 +2,22 @@ var startQuizButton = document.querySelector("#start-quiz");
 var timerCountdown = document.querySelector("#timer");
 var questionAsked = document.querySelector("#main-quiz-header");
 var trueOrFalse = document.querySelector("#true-or-false");
+var footer = document.querySelector("footer");
+var highscoreSelect = document.querySelector("#highscore-button");
 
 var time = 0;
 var score = 0;
 
 function timerGoDown() {
+    highscoreSelect.setAttribute("style", "display: none;");
     makeQuestion();
     trueOrFalse.setAttribute("style", "display: block;");
     trueOrFalse.textContent = "";
+    var main = document.querySelector("main");
+    main.setAttribute("style", "height: 65%");
+    var highscoreDiv = document.querySelector("#main-highscore-div");
+    highscoreDiv.setAttribute("style", "display: none");
+
     time = 60;
     intFunction = setInterval(() => {
         time--;
@@ -17,6 +25,8 @@ function timerGoDown() {
         if (time <= 0) {
             clearInterval(intFunction);
             timeRunOut();
+            highscoreSelect.setAttribute("style", "display: flex;");
+
         }
     }, 1000)
 }
@@ -131,10 +141,10 @@ startQuizButton.addEventListener("click", timerGoDown);
 function updateScore(input) {
     var scoreText = document.querySelector("#score-text");
     scoreText.textContent = "Current Score: " + input
-
+    window.localStorage.setItem("Score", input);
 }
 function timeRunOut() {
-    questionAsked.textContent = "Time's up! Quiz is over.";
+    questionAsked.textContent = "Coding Quiz Challenge";
     var description = document.querySelector("#questions-asked");
     description.setAttribute("style", "display: block;");
     description.textContent = "Your score was: " + score;
@@ -152,7 +162,8 @@ function timeRunOut() {
 
     var saveScoreButton = document.createElement("button");
     saveScoreButton.textContent = "Save Score";
-    saveScoreButton.setAttribute("style", "height: 13%; width: 40%;")
+    saveScoreButton.setAttribute("style", "height: 13%; width: 40%;");
+    saveScoreButton.setAttribute("class", "save-score");
 
 
     mainQuestionDiv.append(playAgainButton);
@@ -169,6 +180,9 @@ function timeRunOut() {
             timerGoDown();
         }
     })
+    saveScoreButton.addEventListener("click", function() {
+        setandView();
+    })
 }
 
 function updateTorF(t, f) {
@@ -179,4 +193,72 @@ function updateTorF(t, f) {
     } else {
         trueOrFalse.setAttribute("style", "display: none;");
     }
+}
+
+function setMainHeader() {
+    var header = document.querySelector("#main-quiz-header");
+    if (header) {
+        header.textContent = "Coding Quiz Challenge";
+    }
+}
+
+var highscoreButton = document.querySelector("#highscore-button");
+
+function changePage() {
+    var main = document.querySelector("main");
+    var startQuizDiv = document.querySelector("#start-quiz-div");
+    var mainQuestionDiv = document.querySelector("#main-question-div");
+    var highscoreText = document.querySelector("#main-quiz-header");
+    var highscoreDiv = document.querySelector("#main-highscore-div");
+
+    var changed = highscoreButton.getAttribute('data-boolean-active');
+    if (changed === "false") {
+    main.setAttribute("style", "height: 80%");
+    startQuizDiv.setAttribute("style", "display: none;");
+    mainQuestionDiv.setAttribute("style", "display: none;");
+    highscoreDiv.setAttribute("style", "display: flex");
+    highscoreText.textContent = "Highscores:";
+
+    highscoreButton.setAttribute('data-boolean-active', "true");
+
+    }
+    if (changed === "true") {
+        mainQuestionDiv.setAttribute("style", "display: flex;");
+        startQuizDiv.setAttribute("style", "display: flex;");
+        highscoreDiv.setAttribute("style", "display: none");
+
+        highscoreButton.setAttribute('data-boolean-active', "false");
+        setMainHeader();
+    }
+
+
+}
+
+function setandView() {
+    changePage();
+    createHighscoreListEl();
+}
+
+highscoreButton.addEventListener("click", changePage);
+
+function createHighscoreListEl(score) {
+ var listPara = document.createElement("p");
+ listPara.setAttribute("class", "highscore-points");
+ var listNumber = document.createElement("h4");
+ listNumber.setAttribute("class", "highscore-number");
+ var listItem = document.createElement("li");
+ listItem.setAttribute("class", "highscore-list-item");
+
+ var highscoreUl = document.querySelector("#highscores");
+
+// add highscore logic
+    listPara.textContent = window.localStorage.getItem("Score");
+    
+
+
+
+
+ highscoreUl.appendChild(listItem);
+ listItem.appendChild(listNumber);
+ listItem.appendChild(listPara);
 }

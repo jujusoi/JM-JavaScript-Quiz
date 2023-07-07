@@ -139,3 +139,32 @@ button {
 #true-or-false {
     font-size: 17px;
 }
+
+#highscore-button:hover {
+    cursor: grab;
+    text-decoration: underline;
+}
+
+#main-highscore-div {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    width: 75%;
+    margin: auto;
+}
+
+#highscores {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#highscores li {
+    margin-top: 5px;
+    height: 30px;
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+}
