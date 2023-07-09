@@ -108,7 +108,6 @@ function addQuestions(one, two, three, right) {
         if (clickedOn === questionButton1 || clickedOn === questionButton2 || clickedOn === questionButton3 || clickedOn === questionButton4) {
             if (clickedOn.textContent === right) {
                 var rightButton = clickedOn.textContent === right;
-                // run true function here
                 mainQuestionDiv.removeChild(questionButton1);
                 mainQuestionDiv.removeChild(questionButton2);
                 mainQuestionDiv.removeChild(questionButton3);
@@ -120,7 +119,6 @@ function addQuestions(one, two, three, right) {
 
             } else {
                 console.log('false');
-                // run false function here
                 updateTorF("", "False");
                 mainQuestionDiv.removeChild(questionButton1);
                 mainQuestionDiv.removeChild(questionButton2);
@@ -157,8 +155,11 @@ function timeRunOut() {
 
     var playAgainButton = document.createElement("button");
     playAgainButton.textContent = "Play Again";
-    playAgainButton.setAttribute("style", "height: 13%; width: 40%; margin: 20px 0;")
+    playAgainButton.setAttribute("style", "height: 13%; width: 40%; margin: 20px 0;");
 
+    var enterInitials = document.createElement("input");
+    enterInitials.placeholder = "Enter name here";
+    enterInitials.setAttribute = ("style", "height: 13%; width: 40%; margin: 20px 0;");
 
     var saveScoreButton = document.createElement("button");
     saveScoreButton.textContent = "Save Score";
@@ -167,6 +168,7 @@ function timeRunOut() {
 
 
     mainQuestionDiv.append(playAgainButton);
+    mainQuestionDiv.append(enterInitials);
     mainQuestionDiv.append(saveScoreButton);
     trueOrFalse.setAttribute("style", "display: none;");
 
@@ -175,6 +177,7 @@ function timeRunOut() {
         if (clickedOn === playAgainButton) {
             mainQuestionDiv.removeChild(saveScoreButton);
             mainQuestionDiv.removeChild(playAgainButton);
+            mainQuestionDiv.removeChild(enterInitials);
             score = 0;
             updateScore(score);
             timerGoDown();
@@ -182,6 +185,14 @@ function timeRunOut() {
     })
     saveScoreButton.addEventListener("click", function() {
         setandView();
+        var unordered = document.querySelector("#highscores");
+        saveScore(unordered);
+        saveScoreButton.disabled = true;
+        enterInitials.disabled = true;
+    })
+    enterInitials.addEventListener("input", function() {
+        var nameContent = enterInitials.value;
+        saveName(nameContent);
     })
 }
 
@@ -210,6 +221,7 @@ function changePage() {
     var mainQuestionDiv = document.querySelector("#main-question-div");
     var highscoreText = document.querySelector("#main-quiz-header");
     var highscoreDiv = document.querySelector("#main-highscore-div");
+    var currentScore = document.querySelector("#score-text");
 
     var changed = highscoreButton.getAttribute('data-boolean-active');
     if (changed === "false") {
@@ -217,18 +229,21 @@ function changePage() {
     startQuizDiv.setAttribute("style", "display: none;");
     mainQuestionDiv.setAttribute("style", "display: none;");
     highscoreDiv.setAttribute("style", "display: flex");
-    highscoreText.textContent = "Highscores:";
-
+    highscoreText.textContent = "Scores:";
+    currentScore.setAttribute("style", "display: none;");
     highscoreButton.setAttribute('data-boolean-active', "true");
+    highscoreButton.textContent = "Return"
 
     }
     if (changed === "true") {
-        mainQuestionDiv.setAttribute("style", "display: flex;");
+        mainQuestionDiv.setAttribute("style", "display: flex; height: 40%;");
         startQuizDiv.setAttribute("style", "display: flex;");
         highscoreDiv.setAttribute("style", "display: none");
-
         highscoreButton.setAttribute('data-boolean-active', "false");
         setMainHeader();
+        currentScore.setAttribute("style", "display: block;");
+        highscoreButton.textContent = "View Scores"
+
     }
 
 
@@ -248,17 +263,29 @@ function createHighscoreListEl(score) {
  listNumber.setAttribute("class", "highscore-number");
  var listItem = document.createElement("li");
  listItem.setAttribute("class", "highscore-list-item");
-
  var highscoreUl = document.querySelector("#highscores");
 
-// add highscore logic
-    listPara.textContent = window.localStorage.getItem("Score");
-    
-
-
-
+    listPara.textContent = "Score: " + window.localStorage.getItem("Score");
+    listNumber.textContent = window.localStorage.getItem("Name");
 
  highscoreUl.appendChild(listItem);
  listItem.appendChild(listNumber);
  listItem.appendChild(listPara);
 }
+
+function saveName(name) {
+    window.localStorage.setItem("Name", name)
+}
+
+function saveScore(input) {
+    var stuff = input.innerHTML;
+    window.localStorage.setItem("Information", stuff);
+}
+
+function init() {
+    var information = window.localStorage.getItem("Information");
+    var unordered = document.querySelector("#highscores");
+    unordered.innerHTML = information;
+}
+
+init();

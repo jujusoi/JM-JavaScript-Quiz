@@ -151,6 +151,7 @@ button {
     height: 100%;
     width: 75%;
     margin: auto;
+    overflow: scroll;
 }
 
 #highscores {
@@ -167,4 +168,9 @@ button {
     align-items: center;
     justify-content: space-between;
     padding: 0 5px;
+}
+
+li {
+    border-radius: 7px;
+    padding: 5px;
 }
