@@ -169,11 +169,9 @@ function makeQuestion() {
     question25.rightAnswer = "For.. Declare.. If.. Then.. Code";
 
     var questionArray = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15, question16, question17, question18, question19, question20, question21, question22, question23, question24, question25];
-    console.log(questionArray);
     if (questionArray) {
         var index = Math.floor(Math.random() * questionArray.length);
         var randomChosenQuestion = questionArray[index];
-        console.log(randomChosenQuestion);
         questionAsked.textContent = randomChosenQuestion.topic;
         var wrongAnswer1 = randomChosenQuestion.wrongAnswers[0];
         var wrongAnswer2 = randomChosenQuestion.wrongAnswers[1];
@@ -232,7 +230,6 @@ function addQuestions(one, two, three, right) {
                 makeQuestion();
 
             } else {
-                console.log('false');
                 updateTorF("", "False");
                 trueorfalsetext.setAttribute("style", "color: red;");
                 mainQuestionDiv.removeChild(questionButton1);
