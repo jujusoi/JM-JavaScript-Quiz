@@ -1,5 +1,5 @@
 * {
-    border: 1px solid black;
+    border: 1px solid transparent;
     font-family: Arial, Helvetica, sans-serif;
 }
 html {
@@ -32,7 +32,8 @@ footer {
 }
 
 .top-bar {
-    height: 60%;
+    height: 70%;
+    border-bottom: 4px solid rgba(176, 176, 176, .35);
 }
 
 #top-bar-div {
@@ -52,9 +53,11 @@ footer {
 }
 #highscore-button {
     margin-left: 8%;
+    color: rgb(190, 78, 78);
 }
 #timer {
     margin-right: 8%;
+    font-size: 95%;
 }
 
 
@@ -77,11 +80,12 @@ footer {
 #h1-div {
     display: flex;
     align-items: center;
-    height: 20%;
+    height: 15%;
 }
 #h1-div h1 {
+    display: flex;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 150%;
 }
 
 #main-question-div {
@@ -92,34 +96,57 @@ footer {
     height: 25%;
 }
 #questions-asked {
-    margin: 10px 0;
+    margin: 11px 0;
 }
 
 .question-button:first-of-type {
 margin-top: 5%;
 }
 .question-button {
-    width: 60%;
-    height: 13%;
-    margin-bottom: 3%;
+    width: 45%;
+    height: 100%;
+    margin-top: 1%;
+    background-color: rgb(159, 65, 65);
+    color: white;
+    font-weight: bold;
+}
+.question-button:last-of-type {
+    margin-bottom: 4%;
+}
+.question-button:first-of-type {
+    margin-top: 4%;
+}
+.question-button:hover {
+    transition: ease-in-out .2s;
+    background-color: rgb(139, 49, 49);
+    box-shadow: inset 2px 2px 9px 9px rgba(0, 0, 0, 0.066);
 }
 
 #start-quiz-div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     height: 15%;
     width: 75%;
 }
 #start-quiz {
     width: 30%;
-    height: 50%;
+    height: 100%;
     border-radius: 5px;
+    background-color: rgb(159, 65, 65);
+    color: white;
+    font-weight: bold;
+}
+#start-quiz:hover {
+    transition: ease-in-out .2s;
+    background-color: rgb(139, 49, 49);
+    box-shadow: inset 2px 2px 9px 9px rgba(0, 0, 0, 0.066);
 }
 #start-quiz-div hr {
-    display: none;
+    display: block;
     width: 100%;
+    border: 2px solid rgba(176, 176, 176, 0.21);
 }
 
 .quiz-footer {
@@ -137,7 +164,8 @@ button {
 }
 
 #true-or-false {
-    font-size: 17px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 #highscore-button:hover {
@@ -159,6 +187,9 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 20px;
+    background-color: rgba(171, 171, 171, 0.096);
+    border-radius: 10px;
 }
 #highscores li {
     margin-top: 5px;
@@ -168,9 +199,90 @@ button {
     align-items: center;
     justify-content: space-between;
     padding: 0 5px;
+    background-color: rgb(159, 65, 65);
+    color: white;
 }
-
+#highscores li:hover {
+    transition: ease-in-out .2s;
+    background-color: rgb(139, 49, 49);
+    box-shadow: inset 2px 2px 9px 9px rgba(0, 0, 0, 0.066);}
+.highscore-points {
+    font-weight: bold;
+}
 li {
     border-radius: 7px;
     padding: 5px;
+}
+
+#score-text {
+    display: none;
+    height: 60%;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    border-top: 3px solid rgba(176, 176, 176, 0.21);
+    text-align: center;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+input {
+    border: 3px solid rgba(176, 176, 176, 0.21);
+    border-radius: 7px;
+    margin-top: 2%;
+    margin-bottom: .5%;
+    width: 30%;
+    height: 35%;
+    text-align: center;
+}
+
+.play-again, .save-score {
+    background-color: rgb(159, 65, 65);
+    color: white;
+    font-weight: bold;
+    width: 40%;
+    height: 50%;
+}
+.save-score {
+    margin-bottom: 2%;
+}
+.play-again:hover, .save-score:hover {
+    transition: ease-in-out .2s;
+    background-color: rgb(139, 49, 49);
+    box-shadow: inset 2px 2px 9px 9px rgba(0, 0, 0, 0.066);
+}
+
+@media only screen and (max-width: 600px) {
+    #main-highscore-div {
+        width: 95%;
+    }
+    #highscores li {
+        width: 85%;
+    }
+    .question-button:first-of-type {
+        margin-top: 10%;
+    }
+    .play-again, .save-score {
+        width: 100%;
+    }
+    .question-button {
+        width: 80%;
+    }
+    input {
+        width: 75%;
+    }
+    #highscores li {
+        padding: 10px;
+    }
+    .highscore-number { 
+        font-size: 70%;
+    }
+    #main-question-div {
+        height: 40%;
+    }
+    #start-quiz {
+        width: 85%;
+    }
+
+
 }
