@@ -130,7 +130,7 @@ function makeQuestion() {
 
     var question18 = Object.create(questions);
     question18.topic = "What does 'JSON.parse()' do?";
-    question18.wrongAnswers = ["Convers JS object into a JSON string", "Parses and executes JavaScript code from a string", "Checks the validity of a JSON string"];
+    question18.wrongAnswers = ["Converts JS object into a JSON string", "Parses and executes JavaScript code from a string", "Checks the validity of a JSON string"];
     question18.rightAnswer = "Converts a JSON string into a JS object";
 
     var question19 = Object.create(questions);
