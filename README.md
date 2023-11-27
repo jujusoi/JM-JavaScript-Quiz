@@ -49,6 +49,6 @@ Simple design.
 
 ## Link
 
-GitHub: https://github.com/jujusoi/JM-Module4-Challenge
+GitHub: https://github.com/jujusoi/JM-JavaScript-Quiz
 
-GitHub Pages: https://jujusoi.github.io/JM-Module4-Challenge/
+GitHub Pages: https://jujusoi.github.io/JM-JavaScript-Quiz
